@@ -1,0 +1,79 @@
+react
+react is js library used to build single page application
+react features:
+1. virtual dom- it is copy of real dom
+              - it will compare and render the changes only
+                using diffing algorithm and entire process is called reconcialation
+2.component architecture-navbar,footer,card,sidebar.jsx
+3.single page application-it contains only one index.html
+ 
+components:
+it is the piece of code which renders part of ui
+1.functional components---hooks-built in functions
+
+fuction Navbar(){
+     return(<h1>navbar</h1>)
+}
+export default Navbar
+2nd comp
+import Nvbar from '/Navbar'
+<Navbar>
+
+2.class components-old--life cycle methods 
+
+react
+--react is js libary used to build single page applications
+
+react features
+1)virtual dom-It is a copy of real dom
+             -It will compare and render the changes only using 
+             diffing alogorithm and the entire process is called reconcialation
+2)components architrecture  -navbar,footer,card,sidebar,jsx
+3)single page application-it contains only one index.html
+
+components--It is the piece of code which renders part of ui
+1)functional components----Hooks(it is simply like built in functions)
+
+1st component:
+function Navbar(){
+    return (<h1>navbar</h1)
+}
+export default Navbar
+
+2nd component:
+import Navbar from '/Navbar'
+
+2)class components ---old---life cycle methods
+
+props--properties
+-----------------
+--It is a object that is used to pass the information from parent to child
+
+--react  will not rerender when the variable changes
+--react re renders only when state changes 
+
+State 
+====
+--It is like a variable it is used to handle the dynamic nature of 
+a component or store the data
+
+Hooks
+====
+--hooks are built in functions that is used to handle react features
+
+1)useState
+===========
+--It is a hook that is used to manage the state
+
+import{useState} from 'react'
+
+let[state,setSate]=useState(0);
+
+{count}
+<button onClick={()=>setCount(count+1)}>inc</button>
+
+Theory
+--state--It is like a variable name
+--state=1
+setSate - it is a function that is used to change the value 
+         of a state
