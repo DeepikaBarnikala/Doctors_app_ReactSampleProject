@@ -1,8 +1,8 @@
 import React from 'react'
 import {useEffect,useState} from 'react'
 import Doctorcard from './Doctorcard';
-
-function Home({newdoctor}) {
+import axios from 'axios'
+function Home({newdoctor,deletedata,updatedata}) {
   let [doctors,setDoctors]=useState([])
   let [search,setSearch]=useState('')
   let [specialization,setSpecialization]=useState('')
@@ -41,13 +41,13 @@ function Home({newdoctor}) {
   }
   useEffect(()=>{
     getapidata()
-  },[])
-
-  useEffect(()=>{
-    if(newdoctor){
-      setDoctors(prev=>[...prev,newdoctor])
-    }
   },[newdoctor])
+
+  // useEffect(()=>{
+  //   if(newdoctor){
+  //     setDoctors(prev=>[...prev,newdoctor])
+  //   }
+  // },[newdoctor])
 
   let filtereddoctors=doctors.filter((val)=>{
     return(val.name.toLowerCase().includes(search.toLowerCase()) && 
@@ -55,6 +55,16 @@ function Home({newdoctor}) {
   )
     // return(search.toLowerCase().includes(val.name.toLowerCase()))
   })
+
+  async function getapidata(){
+    let response=await axios.get("https://doctorapibackend.onrender.com/doctors")
+    console.log(response)
+    console.log(response.data)//actual data
+    setDoctors(response.data)
+}
+  useEffect(()=>{
+      getapidata()
+  },[])
   return (
     <div>
       <input value={search} onChange={(e)=>setSearch(e.target.value)} type="text" placeholder='Search doctor' />
@@ -67,10 +77,13 @@ function Home({newdoctor}) {
         <div className='doctorcontainer'>
           {filtereddoctors.map((doctor)=>{
             return <Doctorcard 
+            deletedata={deletedata}
+            updatedata={updatedata}
             name={doctor.name}
             gender={doctor.gender}
             specialization={doctor.specialization}
-            key={doctor.id}/>
+            key={doctor.id}
+             id={doctor.id}/>
           })}
         </div>):(<h1>loading</h1>)}
     </div>

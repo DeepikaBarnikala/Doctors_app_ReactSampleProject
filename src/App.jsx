@@ -4,8 +4,10 @@ import './components/styles.css'
 import Section from './components/Section'
 import Doctorcard from './components/Doctorcard'
 import Addnewdoctor from './components/Addnewdoctor'
-import {useState} from 'react'
-import {useEffect} from 'react'
+// import {useState} from 'react'
+// import {useEffect} from 'react'
+import { Route,Routes } from 'react-router-dom'
+import Doctordetails from './components/Doctordetails'
 // function App() {
 //   let count=0
 //   return (
@@ -34,16 +36,21 @@ function App() {
         ()=>{setCount(count+1)}
       }>add</button> */}
       <Navbar/>
-      <Section/>
+      <Routes>
+        <Route path='/' element={<Section/>} />
+        <Route path='/addnewdoctor' element={<Addnewdoctor/>}/>
+        <Route path='/doctordetails/:id' element={<Doctordetails/>}/>
+      </Routes>
+      {/* <Section/>
 
-      {/* <div className='doctorcontainer'>
+      <div className='doctorcontainer'>
          <Doctorcard imglink='' name='John' gender='male' specialization='Heart specialist'/>
         <Doctorcard name='Ram' gender='male' specialization='Bones specialist'/>
         <Doctorcard name='Rishi' gender='male' specialization='Neuro specialist'/>
         <Doctorcard name='Sri' gender='male' specialization='Ortho specialist'/>
         <Doctorcard name='Diya' gender='female' specialization='Psycho specialist'/>
-      </div> */}
-      <Addnewdoctor/>
+      </div> 
+      <Addnewdoctor/> */}
       
     </div>
   )
